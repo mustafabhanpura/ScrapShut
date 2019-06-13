@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    {% load staticfiles %}
+	<title>
+
+	</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+	<!-- JQuery -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/detail.css'  %}">
+</head>
+<body>
+
+		<!--Main Navigation-->
+<header>
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
+    <a class="navbar-brand" href="#"><strong style="font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; font-size:25px;">ScrapShut</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!--<li class="nav-item active">
+          <a class="nav-link" href="{% url 'myapp:input' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        -->
+      </ul>
+      <ul class="navbar-nav nav-flex-icons">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'myapp:input' %}"><i class="fas fa-home fa-2x" ></i></a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+</header>
+<!--Main Navigation-->
+
+
+
+	<br><br><br><br>
+<section class="cover" >
+
+	<div class="container">
+  		<div class="row" style="display : flex;">
+            {% for a in everything %}
+    		<div class="col">
+      			<div class="card-deck">
+
+  <!-- Card -->
+  					<div class="card mb-4" >
+
+					    <!--Card image-->
+					    <div class="view overlay">
+					      <img class="card-img-top" src="{{a.image.url}}" alt="Card image cap" style="max-width:100%;max-width:100%;">
+					      <a href="#!">
+					        <div class="mask rgba-white-slight"></div>
+					      </a>
+					    </div>
+
+    <!--Card content-->
+    					<div class="card-body ">
+
+      <!--Title-->
+	      					<h4 class="card-title" style="padding:0px;margin:0px;">{{a.name}}</h4>
+                            <br>
+    	      <!--Text-->
+
+	      					<h2 class="card-text" style="font-size:18px;font-family: Arial, Helvetica, sans-serif;"><i class="fas fa-envelope"></i> : {{a.email}}</h2>
+                            <h2 class="card-text" style="font-size:18px;font-family: Arial, Helvetica, sans-serif;"><i class="fas fa-address-book"></i> : {{a.phone_number}}</h2>
+                            <h2 class="card-text" style="font-size:18px;font-family: Arial, Helvetica, sans-serif;"><i class="fas fa-user-graduate"></i> : {{a.stream}}</h2>
+                            <br>
+
+                            <video  style="" width="320" height="240"  controls>
+                                <source src="{{a.video.url}}" type="video/mp4">
+
+
+                            </video>
+                <br><br><br>
+	      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                            <a href="{% url 'myapp:delete' a.id%}"><i class="fas fa-trash fa-2x" style="margin-left:45%;color:black;"></i></a>
+    					</div>
+
+  					</div>
+  				</div>
+    		</div>
+            &nbsp;&nbsp;
+        {% endfor %}
+  		</div>
+
+
+	</div>
+
+  </section>
+
+</body>
+<style>
+    .container{
+	width: auto;
+	height: auto;
+	margin : 20px;
+	align-items: center;
+	display:flex;
+}
+.cover{
+	margin: 0px;
+	width: auto;
+	height: auto;
+	align-items: center;
+	display:flex;
+}
+.card-deck{
+    width:420px;
+    height:420px
+    display:flex;
+    padding:10px;
+}
+.card-body{
+    height:auto;
+    width:auto;
+
+}
+.card-text{
+    text-align: left;
+    font-size:25px;
+
+}
+.card-title{
+    text-align:center;
+}
+.btn{
+    align-items:center;
+    display:flex;
+}
+
+</style>
+</html>

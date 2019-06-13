@@ -1,0 +1,12 @@
+.container{
+	width: 50%;
+	height: auto;
+	margin : 20px;
+	align-items: center;
+}
+.cover{
+	margin: 20px;
+	width: auto;
+	height: auto;
+	align-items: center;
+}
